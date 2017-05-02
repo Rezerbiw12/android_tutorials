@@ -7,21 +7,25 @@
     tools:context="com.example.hoangnd.androidtutorialproject.FirstActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="This is screen1"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnNavigateToScreen2"
+        android:onClick="handleNavigateToScreen2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="365dp" />
+        android:text="Navigate to Screen2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewContent"
+        android:layout_marginTop="20dp"
+        tools:layout_editor_absoluteY="335dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hoangnd.androidturorialproject.MainActivity">
+
+    <CheckBox
+        android:id="@+id/checkBoxPizza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pizza"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSalad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salad"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxPizza"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/checkBoxPizza"
+        />
+
+    <CheckBox
+        android:id="@+id/checkBoxCake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cake"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxSalad"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/checkBoxPizza"
+        />
+
+</android.support.constraint.ConstraintLayout>
