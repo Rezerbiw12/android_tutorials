@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listViewStudents;
-    private ArrayAdapter<Student> adapter;
+    private StudentAdapter adapter;
     private ArrayList<Student> students = new ArrayList<>();
 
     @Override
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         students.add(new Student("Domino Roro", "mail555@gmail.com",""));
         students.add(new Student("Moon Kat ", "mail666@gmail.com",""));
         students.add(new Student("Kitty Toys ", "mail777@gmail.com",""));
-        adapter = new ArrayAdapter<Student>(this, R.layout.list_item,R.id.textViewName, students);
+        adapter = new StudentAdapter(this, students);
         listViewStudents.setAdapter(adapter);
 
         listViewStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {

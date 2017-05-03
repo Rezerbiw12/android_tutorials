@@ -48,7 +48,8 @@ class StudentAdapter extends BaseAdapter {
         TextView textViewName = (TextView) context.findViewById(R.id.textViewName);
         TextView textViewEmail = (TextView) context.findViewById(R.id.textViewEmail);
         Student selectedStudent = students.get(position);
-        textViewName.setText();
+        textViewName.setText(selectedStudent.name);
+        textViewEmail.setText(selectedStudent.email);
         return itemView;
     }
 }
