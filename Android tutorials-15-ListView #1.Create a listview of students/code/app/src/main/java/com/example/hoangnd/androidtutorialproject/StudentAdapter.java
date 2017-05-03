@@ -45,8 +45,8 @@ class StudentAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         View itemView = convertView;
         itemView = (itemView == null) ? inflater.inflate(R.layout.list_item, null): itemView;
-        TextView textViewName = (TextView) context.findViewById(R.id.textViewName);
-        TextView textViewEmail = (TextView) context.findViewById(R.id.textViewEmail);
+        TextView textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+        TextView textViewEmail = (TextView) itemView.findViewById(R.id.textViewEmail);
         Student selectedStudent = students.get(position);
         textViewName.setText(selectedStudent.name);
         textViewEmail.setText(selectedStudent.email);
