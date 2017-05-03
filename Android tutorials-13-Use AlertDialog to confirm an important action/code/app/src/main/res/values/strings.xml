@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidTutorialProject</string>
+    <string name="show_alert">Show alert Dialog</string>
+    <string name="alert_yes">Yes, me me</string>
+    <string name="alert_no">No, me me</string>
+
+</resources>
