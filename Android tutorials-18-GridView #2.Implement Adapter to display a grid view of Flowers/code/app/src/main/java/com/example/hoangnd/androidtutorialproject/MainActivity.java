@@ -13,7 +13,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private GridView gridViewFlowers;
-    ArrayList<Flower> flowers;
+    ArrayList<Flower> flowers = new ArrayList<>();
+    FlowerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         flowers.add(new Flower("sunflower",R.drawable.sunflower));
         flowers.add(new Flower("tulip",R.drawable.tulip));
         flowers.add(new Flower("windflower",R.drawable.windflower));
+        adapter = new FlowerAdapter(this, flowers);
+        gridViewFlowers.setAdapter(adapter);
         gridViewFlowers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -1,15 +1,15 @@
 package com.example.hoangnd.androidtutorialproject;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.hoangnd.androidtutorialproject.models.Flower;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -52,6 +52,6 @@ public class FlowerAdapter extends BaseAdapter {
         Flower selectedFlower = flowers.get(position);
         imageViewFlower.setImageResource(selectedFlower.imageId);
         textViewFlowerName.setText(selectedFlower.name);
-        return  itemView;
+        return itemView;
     }
 }
