@@ -21,8 +21,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/seekBarPercent"
         android:layout_marginTop="20dp"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:text="percent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

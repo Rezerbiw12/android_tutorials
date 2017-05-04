@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         seekBarPercent = (SeekBar) findViewById(R.id.seekBarPercent);
         textViewPercent = (TextView) findViewById(R.id.textViewPercent);
 
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-//                textViewPercent.setText("Progress: " + progress + seekBarPercent.getMax() + " %");
                 Toast.makeText(MainActivity.this, "Stop...", Toast.LENGTH_SHORT).show();
             }
         });

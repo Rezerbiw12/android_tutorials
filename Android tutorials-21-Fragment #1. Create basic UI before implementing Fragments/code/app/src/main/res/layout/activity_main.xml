@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hoangnd.androidtutorialproject.MainActivity">
+    <fragment
+        android:id="@+id/fragment"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:name="layout.FirstFragment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout="@layout/fragment_first">
+    </fragment>
+    <LinearLayout
+        android:id="@+id/linearLayoutButtonGroup"
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+        <Button
+            android:id="@+id/btnFragment1"
+            android:onClick="changeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/colorDarkBlue"
+            android:text="Fragment1"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnFragment2"
+            android:onClick="changeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/colorDarkRed"
+            android:textColor="#FFFFFF"
+            android:text="Fragment2" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
