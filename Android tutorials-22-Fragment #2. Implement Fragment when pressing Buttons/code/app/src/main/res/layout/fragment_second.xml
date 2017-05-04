@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.FirstFragment"
-    android:background="@color/colorDarkBlue"
+    tools:context="layout.SecondFragment"
+    android:background="@color/colorDarkRed"
     >
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
-        android:text="@string/first_fragment_title" />
-
+        android:text="@string/second_fragment_title" />
 
 </FrameLayout>

@@ -1,7 +1,7 @@
 package com.example.hoangnd.androidtutorialproject;
 
-import android.app.FragmentTransaction;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    public void changeFragment(View view) {
+    public void handleChangeFragment(View view) {
         Fragment selectedFragment;
         if(view == findViewById(R.id.btnFragment1)) {
             selectedFragment = new FirstFragment();
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment, selectedFragment);
             fragmentTransaction.commit();
-        } else if(view == findViewById(R.id.btnFragment2)){
+        } else if(view == findViewById(R.id.btnFragment2)) {
             selectedFragment = new SecondFragment();
             fragmentManager = getFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
