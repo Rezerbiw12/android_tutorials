@@ -1,7 +1,9 @@
 package com.example.hoangnd.androidturotialproject;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,12 +13,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextAmount;
     private ImageView imageViewFlower;
     private Button btnInsertData;
+
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("MainActivity", "onCancelled");
             }
         });
+
+//        storageRef = storage.getReference();
+        storageRef = storage.getReferenceFromUrl("gs://androidtutorialproject.appspot.com");
     }
     public void handleChooseImage(View view) {
         Intent pickerPhotoIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -68,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "You must select image !", Toast.LENGTH_SHORT);
             return;
         }
-        //Insert data to Firebase Storage
-        
 
     }
 
@@ -87,8 +99,37 @@ public class MainActivity extends AppCompatActivity {
                     Uri selectedImage = imageReturnedIntent.getData();
                     Log.i("MainActivity", "selected Image = "+selectedImage);
                     this.imageViewFlower.setImageURI(selectedImage);
+                    uploadImageToFirebase();
                 }
                 break;
         }
+    }
+    private void uploadImageToFirebase() {
+        // Get the data from an ImageView as bytes
+        this.imageViewFlower.setDrawingCacheEnabled(true);
+        this.imageViewFlower.buildDrawingCache();
+        Bitmap bitmap = this.imageViewFlower.getDrawingCache();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+//        UploadTask uploadTask = storageRef.child("images").child("abcxmkjifef123.jpg").putBytes(data);
+        StorageReference mountainsRef = storageRef.child("images/mountains.jpeg");
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.i("MainActivity", "Upload failed");
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                Log.i("MainActivity", "Upload successful, downloadUrl = "+downloadUrl);
+            }
+        });
     }
 }
