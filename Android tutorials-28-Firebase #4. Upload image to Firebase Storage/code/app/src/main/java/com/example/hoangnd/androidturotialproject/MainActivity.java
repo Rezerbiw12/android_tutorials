@@ -69,23 +69,6 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(pickerPhotoIntent, 1);
     }
 
-    public void handleInsertData(View view) {
-        if(editTextFlowerName.getText().toString() == "") {
-            Toast.makeText(this, "Flower name cannot be null !", Toast.LENGTH_SHORT);
-            return;
-        }
-        if(editTextAmount.getText().toString() == "") {
-            Toast.makeText(this, "Flower's amount cannot be null !", Toast.LENGTH_SHORT);
-            return;
-        }
-        if( this.imageViewFlower.getDrawable() == null) {
-            //Image is blank
-            Toast.makeText(this, "You must select image !", Toast.LENGTH_SHORT);
-            return;
-        }
-
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
@@ -100,11 +83,12 @@ public class MainActivity extends AppCompatActivity {
                     Uri selectedImage = imageReturnedIntent.getData();
                     Log.i("MainActivity", "selected Image = "+selectedImage);
                     this.imageViewFlower.setImageURI(selectedImage);
-                    uploadImageToFirebase();
+                    this.uploadImageToFirebase();
                 }
                 break;
         }
     }
+
     private void uploadImageToFirebase() {
         // Get the data from an ImageView as bytes
         this.imageViewFlower.setDrawingCacheEnabled(true);
@@ -131,4 +115,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
