@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnInsertData = (Button)findViewById(R.id.btnInsertData);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        storageRef = storage.getReferenceFromUrl("gs://androidtutorialproject.appspot.com/images");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 //        storageRef = storage.getReference();
-        storageRef = storage.getReferenceFromUrl("gs://androidtutorialproject.appspot.com");
+
     }
     public void handleChooseImage(View view) {
         Intent pickerPhotoIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -112,9 +113,7 @@ public class MainActivity extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
-
-//        UploadTask uploadTask = storageRef.child("images").child("abcxmkjifef123.jpg").putBytes(data);
-        StorageReference mountainsRef = storageRef.child("images/mountains.jpeg");
+        StorageReference mountainsRef = storageRef.child("myimagename.jpg");
         UploadTask uploadTask = mountainsRef.putBytes(data);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
