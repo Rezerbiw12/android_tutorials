@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "315131666549",
+    "firebase_url": "https://androidtutorialproject.firebaseio.com",
+    "project_id": "androidtutorialproject",
+    "storage_bucket": "androidtutorialproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315131666549:android:8e49b49991e2a61d",
+        "android_client_info": {
+          "package_name": "com.example.hoangnd.androidturotialproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315131666549-d40q6a7ceeu2npnomj1enlqttd5uptte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsu3vlNFqT4NjPXd5_cxgUghIR0ZT7gcA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
