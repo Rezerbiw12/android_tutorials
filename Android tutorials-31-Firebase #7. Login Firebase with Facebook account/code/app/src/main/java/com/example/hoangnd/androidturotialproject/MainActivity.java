@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private void initializeFacebookLogin() {
         // Initialize Facebook Login button
         callbackManager = CallbackManager.Factory.create();
-        btnFacebookLogin.setReadPermissions("email", "public_profile");
+        btnFacebookLogin.setReadPermissions("email", "public_profile","user_friends");
         btnFacebookLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -75,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
                 // ...
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
