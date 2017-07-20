@@ -1,0 +1,76 @@
+
+<TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is first Activity!"
+        android:textColor="@color/colorAccent"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnNavigateToAcivity2"
+        android:onClick="handleNavigateToActivity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Navigate to Second Activity"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginTop="30dp"
+    />
+
+Ssecone:
+<TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is second Activity!"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnReadGlobalVariables"
+        android:onClick="handleReadGlobalVariables"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read Global Variables"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginTop="30dp"
+         />
+
+MainActivity
+public static String globalPreferenceName = "com.hoangnd.profile";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        SharedPreferences.Editor editor = getSharedPreferences(globalPreferenceName, MODE_PRIVATE).edit();
+        editor.putString("name", "Nguyen Duc Hoang");
+        editor.putString("email", "sunlight4d@gmail.com");
+        editor.putInt("age", 35);
+        editor.commit();
+    }
+    public void handleNavigateToActivity2(View view) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(intent);
+    }
+
+SecondActivity:
+public void handleReadGlobalVariables(View view) {
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.globalPreferenceName, MODE_PRIVATE);
+        String name = sharedPreferences.getString("name", "No name");//"No name" = default value.
+        String email = sharedPreferences.getString("email", "No email");//"email" = default value.
+        int age = sharedPreferences.getInt("age", 18); //18 = default value.
+        Toast.makeText(this, "Name = "+name+" Email = "+email+" Age = "+age, Toast.LENGTH_LONG).show();
+    }
+    
